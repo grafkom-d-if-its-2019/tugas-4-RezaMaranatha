@@ -46,7 +46,7 @@ void main() {
     fPosition = vPosition;
   }
   else if(flag == 1){
-    gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vPosition, 1.0);
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix *TranslationMatrix * ScaleMatrix * vec4(vPosition, 1.0);
     fColor = vColor;
   }
 }

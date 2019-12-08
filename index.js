@@ -69,19 +69,19 @@
           }
           switch (indices[i]) {
             case a:
-              Kubus.push((a-2));
+              Kubus.push((a-2)*0.125);
               Kubus.push(0.0);
               break;
             case b:
-              Kubus.push((a-2));
+              Kubus.push((a-2)*0.125);
               Kubus.push(1.0);
               break;
             case c:
-              Kubus.push((a-1));
+              Kubus.push((a-1)*0.125);
               Kubus.push(1.0);
               break;
             case d:
-              Kubus.push((a-1));
+              Kubus.push((a-1)*0.125);
               Kubus.push(0.0);
               break;
           
@@ -155,18 +155,18 @@
       document.addEventListener('keydown', onKeyDown);
     
       verticesBatang = [
-        -0.03, -0.3, 0.0,     1.0, 1.0, 1.0, 
-        -0.03,  0.2, 0.0,     1.0, 1.0, 1.0,
-        -0.09, -0.3, 0.0,     1.0, 1.0, 1.0,
-        -0.03,  0.2, 0.0,     1.0, 1.0, 1.0,
-        -0.09,  0.2, 0.0,     1.0, 1.0, 1.0,
-        -0.01,  0.2, 0.0,     1.0, 1.0, 1.0,
+        -0.03, -0.3, 0.0,     0.0, 0.5, 1.0, 
+        -0.03,  0.2, 0.0,     0.0, 0.5, 1.0,
+        -0.09, -0.3, 0.0,     0.0, 0.5, 1.0,
+        -0.03,  0.2, 0.0,     0.0, 0.5, 1.0,
+        -0.09,  0.2, 0.0,     0.0, 0.5, 1.0,
+        -0.01,  0.2, 0.0,     0.0, 0.5, 1.0
       ];
       verticesMiring = [
-         0.15, -0.3, 0.0,      1.0, 1.0, 1.0, 
-         0.0, -0.05, 0.0,      1.0, 1.0, 1.0,
-         0.07, -0.3, 0.0,      1.0, 1.0, 1.0,
-        -0.07, -0.05, 0.0,     1.0, 1.0, 1.0,
+         0.15, -0.3, 0.0,      0.0, 0.5, 1.0, 
+         0.0, -0.05, 0.0,      0.0, 0.5, 1.0,
+         0.07, -0.3, 0.0,      0.0, 0.5, 1.0,
+        -0.07, -0.05, 0.0,     0.0, 0.5, 1.0
       ];
       var verticesR = [];
 
@@ -175,12 +175,12 @@
         var vert1 = [
           -0.08 + Math.sin(j) * 0.15 + 0.05,
           Math.cos(j) * 0.15 + 0.05,
-          0.0, 1.0, 0.5, 0.0
+          0.0, 0.0, 0.5, 1.0
         ];
         var vert2 = [
           -0.08 + Math.sin(j) * 0.085 + 0.05,
           Math.cos(j) * 0.085 + 0.05,
-          0.0, 1.0, 0.5, 0.0
+          0.0, 0.0, 0.5, 1.0
         ];
         
         verticesR = verticesR.concat(vert1);
@@ -205,6 +205,18 @@
     
             
         gl.uniformMatrix4fv(mmLoc, false, mm);
+
+        if (trans[0] >= (0.7 - Math.abs(0.2 * 0.7 * scaleM))) X = -1.0;
+        else if (trans[0] <= (-0.7 + Math.abs(0.2 * 0.7 * scaleM))) X = 1.0;
+        trans[0] += 0.009 * X;
+
+        if (trans[1] >= (0.7 - (0.3 * 0.7))) Y = -1.0;
+        else if (trans[1] <= (-0.7 + (0.3 * 0.7))) Y = 1.0;
+        trans[1] += 0.010 * Y;
+
+        if (trans[2] >= (0.7 - Math.abs(0.2 * 0.7 * scaleM))) Z = -1.0;
+        else if (trans[2] <= (-0.7 + Math.abs(0.2 * 0.7 * scaleM))) Z = 1.0;
+        trans[2] += 0.011 * Z;
     
         flag = 0;
         gl.uniform1i(flagUniformLocation, flag);
@@ -266,18 +278,6 @@
         var vPosition = gl.getAttribLocation(program, 'vPosition');
         var vColor = gl.getAttribLocation(program, 'vColor');
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-
-        if (trans[0] >= (0.7 - Math.abs(0.2 * 0.7 * scaleM))) X = -1.0;
-        else if (trans[0] <= (-0.7 + Math.abs(0.2 * 0.7 * scaleM))) X = 1.0;
-        trans[0] += 0.009 * X;
-
-        if (trans[1] >= (0.7 - (0.3 * 0.7))) Y = -1.0;
-        else if (trans[1] <= (-0.7 + (0.3 * 0.7))) Y = 1.0;
-        trans[1] += 0.010 * Y;
-
-        if (trans[2] >= (0.7 - Math.abs(0.2 * 0.7 * scaleM))) Z = -1.0;
-        else if (trans[2] <= (-0.7 + Math.abs(0.2 * 0.7 * scaleM))) Z = 1.0;
-        trans[2] += 0.011 * Z;
 
         gl.uniform3fv(transLoc, trans);
 
@@ -343,7 +343,7 @@
   
       // Asynchronously load an image
       var image = new Image();
-      image.src = "images/txStainglass.bmp";
+      image.src = "images/new.jpg";
       image.addEventListener('load', function() {
         // Now that the image has loaded make copy it to the texture.
         gl.bindTexture(gl.TEXTURE_2D, texture);
