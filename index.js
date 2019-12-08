@@ -154,7 +154,7 @@
       }
       document.addEventListener('keydown', onKeyDown);
     
-      verticesR = [
+      verticesBatang = [
         -0.03, -0.3, 0.0,     1.0, 0.5, 0.0, 
         -0.03,  0.2, 0.0,     1.0, 0.5, 0.0,
         -0.09, -0.3, 0.0,     1.0, 0.5, 0.0,
@@ -163,10 +163,10 @@
         -0.09,  0.2, 0.0,     1.0, 0.5, 0.0,
         // -0.07, 0.35, 0.0, 1.0, 0.5, 0.0
       ];
-      verticesBatang = [
+      verticesMiring = [
 
       ];
-      var vertices3 = [];
+      var verticesR = [];
 
       for (var i=0.0; i<=360; i+=1) {
         var j = i * Math.PI / 180;
@@ -181,8 +181,8 @@
           0.0, 1.0, 0.5, 0.0
         ];
         
-        vertices3 = vertices3.concat(vert1);
-        vertices3 = vertices3.concat(vert2);  
+        verticesR = verticesR.concat(vert1);
+        verticesR = verticesR.concat(vert2);  
       }
   
   
@@ -226,8 +226,8 @@
         flag = 1;
         gl.uniform1i(flagUniformLocation, flag);
         gl.uniform1i(fFlagUniformLocation, flag);
-        drawShapes(gl.TRIANGLE_STRIP, verticesR,6);
-        drawShapes(gl.TRIANGLE_STRIP, vertices3,362);
+        drawShapes(gl.TRIANGLE_STRIP, verticesBatang,6);
+        drawShapes(gl.TRIANGLE_STRIP, verticesR,362);
 
         // drawShapes(gl.TRIANGLE_STRIP, vertices3,360);
         gl.disableVertexAttribArray(vColor);
