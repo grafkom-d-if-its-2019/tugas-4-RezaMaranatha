@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Belajar Web GL </title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <canvas id="glcanvas">
+            <!--tulisan ini muncul kalo browser ga support html5-->
+            Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.
+        </canvas>
+        <script name="shader" data-src="vertex.glsl" data-type="vertex" data-version="v1"></script>
+        <script name="shader" data-src="vertexCube.glsl" data-type="vertex" data-version="v2"></script>
+        <script name="shader" data-src="fragment.glsl" data-type="fragment" data-version="v1"></script>
+        <script type="text/javascript" src="libs/signals.js"></script>
+        <script type="text/javascript" src="libs/gl-matrix-min.js"></script>
+        <script type="text/javascript" src="libs/glUtils.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>
