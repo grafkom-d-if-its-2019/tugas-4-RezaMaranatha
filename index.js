@@ -155,16 +155,18 @@
       document.addEventListener('keydown', onKeyDown);
     
       verticesBatang = [
-        -0.03, -0.3, 0.0,     1.0, 0.5, 0.0, 
-        -0.03,  0.2, 0.0,     1.0, 0.5, 0.0,
-        -0.09, -0.3, 0.0,     1.0, 0.5, 0.0,
-        -0.03,  0.2, 0.0,     1.0, 0.5, 0.0,
-        -0.09,  0.2, 0.0,     1.0, 0.5, 0.0,
-        -0.09,  0.2, 0.0,     1.0, 0.5, 0.0,
-        // -0.07, 0.35, 0.0, 1.0, 0.5, 0.0
+        -0.03, -0.3, 0.0,     1.0, 1.0, 1.0, 
+        -0.03,  0.2, 0.0,     1.0, 1.0, 1.0,
+        -0.09, -0.3, 0.0,     1.0, 1.0, 1.0,
+        -0.03,  0.2, 0.0,     1.0, 1.0, 1.0,
+        -0.09,  0.2, 0.0,     1.0, 1.0, 1.0,
+        -0.01,  0.2, 0.0,     1.0, 1.0, 1.0,
       ];
       verticesMiring = [
-
+         0.15, -0.3, 0.0,      1.0, 1.0, 1.0, 
+         0.0, -0.05, 0.0,      1.0, 1.0, 1.0,
+         0.07, -0.3, 0.0,      1.0, 1.0, 1.0,
+        -0.07, -0.05, 0.0,     1.0, 1.0, 1.0,
       ];
       var verticesR = [];
 
@@ -176,8 +178,8 @@
           0.0, 1.0, 0.5, 0.0
         ];
         var vert2 = [
-          -0.08 + Math.sin(j) * 0.5 * 0.15 + 0.05,
-          Math.cos(j) * 0.5 * 0.15 + 0.05,
+          -0.08 + Math.sin(j) * 0.085 + 0.05,
+          Math.cos(j) * 0.085 + 0.05,
           0.0, 1.0, 0.5, 0.0
         ];
         
@@ -228,8 +230,9 @@
         gl.uniform1i(fFlagUniformLocation, flag);
         drawShapes(gl.TRIANGLE_STRIP, verticesBatang,6);
         drawShapes(gl.TRIANGLE_STRIP, verticesR,362);
+        drawShapes(gl.TRIANGLE_STRIP, verticesMiring,4);
 
-        // drawShapes(gl.TRIANGLE_STRIP, vertices3,360);
+
         gl.disableVertexAttribArray(vColor);
         gl.enable(gl.DEPTH_TEST);
         requestAnimationFrame(render);
