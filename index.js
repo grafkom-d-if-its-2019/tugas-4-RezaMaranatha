@@ -138,21 +138,6 @@
       document.addEventListener('mousedown', onMouseDown);
       document.addEventListener('mouseup', onMouseUp);
       document.addEventListener('mousemove', onMouseMove);
-  
-      function onKeyDown(event) {
-        if (event.keyCode == 83) thetaSpeed -= 0.01;       // key 's' google chrome
-        else if (event.keyCode == 87) thetaSpeed += 0.01;  // key 'w'
-        // if (event.keyCode == 173) thetaSpeed -= 0.01;       // key '-' firefox mozilla
-        // else if (event.keyCode == 61) thetaSpeed += 0.01;  // key '='
-        else if (event.keyCode == 48) thetaSpeed = 0;       // key '0'
-        if (event.keyCode == 190) camera.z -= 0.1;          // key '/'
-        else if (event.keyCode == 191) camera.z += 0.1;     // key '.'
-        if (event.keyCode == 37) camera.x -= 0.1;           // key kiri
-        else if (event.keyCode == 39) camera.x += 0.1;      // key kanan
-        if (event.keyCode == 38) camera.y += 0.1;           // key atas 
-        else if (event.keyCode == 40) camera.y -= 0.1;      // key Bawah
-      }
-      document.addEventListener('keydown', onKeyDown);
     
       verticesBatang = [
         -0.03, -0.3, 0.0,     0.0, 0.5, 1.0, 
